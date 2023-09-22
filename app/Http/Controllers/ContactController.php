@@ -10,9 +10,11 @@ class ContactController extends Controller
      public function submit(Request $request)
     {
         $validatedData = $request->validate([
-            'phone' => 'required|number|min:11|max:11',
+            'phone' => ['required', 'regex:/^(?:\+?880|0)(\d{10})$/', 'min:11', 'max:11'],
             'message' => 'required|string',
             'send_to' => 'required|string',
+        ], [
+            'phone.regex' => 'The :attribute must be a valid Bangladeshi phone number.',
         ]);
 
 
