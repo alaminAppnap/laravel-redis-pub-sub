@@ -37,6 +37,29 @@
         </div>
         @endif
     </div>
+
+<div class="form-group">
+    <label>Send To</label>
+<br>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="send_to" id="send_to_all" value="all" checked>
+        <label class="form-check-label" for="send_to_all">
+            All
+        </label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="send_to" id="send_to_slack" value="slack">
+        <label class="form-check-label" for="send_to_slack">
+            Slack
+        </label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="send_to" id="do_not_send_to_slack" value="sms">
+        <label class="form-check-label" for="do_not_send_to_slack">
+            SMS
+        </label>
+    </div>
+</div>
     <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
 </form>   
 </div>
