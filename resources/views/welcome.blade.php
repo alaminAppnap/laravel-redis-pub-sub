@@ -19,7 +19,7 @@
     <form method="POST" action="{{ route('contact.submit') }}"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>
     @csrf
     <div class="form-group">
-        <label>Phone</label>
+        <label>Phone number</label>
         <input type="text" class="form-control {{ $errors->has('phone') ? 'error' : '' }}" name="phone" id="phone">
         @if ($errors->has('phone'))
         <div class="error">

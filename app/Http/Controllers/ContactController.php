@@ -10,7 +10,7 @@ class ContactController extends Controller
      public function submit(Request $request)
     {
         $validatedData = $request->validate([
-            'phone' => 'required|string|min:11|max:11',
+            'phone' => 'required|number|min:11|max:11',
             'message' => 'required|string',
             'send_to' => 'required|string',
         ]);
