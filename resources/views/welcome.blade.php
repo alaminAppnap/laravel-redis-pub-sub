@@ -10,7 +10,12 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Send notification or message service</h1>
+        <div class="card">
+            <div class="card-body">
+                <h3>Send notification or message service</h3>
+            </div>
+        </div>
+        
         <!-- Success message -->
         @if(Session::has('message'))
             <div class="alert alert-success" id="flash-message">
