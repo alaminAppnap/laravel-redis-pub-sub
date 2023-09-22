@@ -19,8 +19,8 @@ jobs:
           script: |
             cd /var/www/redis-pub-sub/laravel-redis-pub
             php artisan down
+            git fetch --all
             git checkout master
-            git pull origin master
             composer update -o -n --no-dev
             php artisan migrate
             php artisan optimize
