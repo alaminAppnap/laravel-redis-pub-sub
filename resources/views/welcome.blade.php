@@ -16,7 +16,7 @@
                 {{Session::get('message')}}
             </div>
         @endif
-    <form method="POST" action="{{ route('contact.submit') }}">
+    <form method="POST" action="{{ route('contact.submit') }}"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>
     @csrf
     <div class="form-group">
         <label>Phone</label>
@@ -59,6 +59,11 @@
             SMS
         </label>
     </div>
+    @if ($errors->has('send_to'))
+        <div class="error">
+            {{ $errors->first('send_to') }}
+        </div>
+        @endif
 </div>
     <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
 </form>   
