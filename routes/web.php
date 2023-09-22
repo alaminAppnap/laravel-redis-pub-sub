@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redis;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,7 @@ use Illuminate\Support\Facades\Redis;
 */
 
 Route::get('/', function () {
- Redis::publish('slackchannel', json_encode([
-        'name' => 'Adam Wathan',
-        'phone' => "0175884529",
-        'message' => "Your message sccessflly send"
-    ]));
     return view('welcome');
 });
+
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
