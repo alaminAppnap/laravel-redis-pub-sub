@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="container mt-5">
+    <div class="text-bg-primary p-3">Primary with contrasting color</div>
         <h4>Send notification or message service</h4>
         
         <!-- Success message -->
