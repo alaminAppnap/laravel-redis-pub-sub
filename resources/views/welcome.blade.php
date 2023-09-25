@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h4>Send notification or message service</h4>
+        <h4>Send notification or message</h4>
         
         <!-- Success message -->
         @if(Session::has('message'))
