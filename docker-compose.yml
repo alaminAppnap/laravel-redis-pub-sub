@@ -1,30 +1,29 @@
 version: '3'
 
 networks:
-    amarpet_backend:
+    laravel_redis_publisher:
         driver: bridge
 
 services:
-    amarpet_app:
+    laravel_redis_publisher_app:
         build:
             context: ./docker/development
             dockerfile: nginx.dockerfile
         ports:
             - "8081:80"
-        container_name: amarpet_app
+        container_name: laravel_redis_publisher_app
         volumes:
             - ./:/var/www/html:delegated
         depends_on:
-            - amarpet_php
-            - amarpet_redis
-            - amarpet_mysql
+            - laravel_redis_publisher_php
+            - laravel_redis_publisher_mysql
         networks:
-            - amarpet_backend
+            - laravel_redis_publisher
 
-    amarpet_mysql:
+    laravel_redis_publisher_mysql:
         image: mysql:8.0
         restart: unless-stopped
-        container_name: amarpet_mysql
+        container_name: laravel_redis_publisher_mysql
         tty: true
         volumes:
             - ./docker/development/backup:/var/lib/mysql
@@ -39,14 +38,14 @@ services:
             SERVICE_TAGS: dev
             SERVICE_NAME: mysql
         networks:
-            - amarpet_backend
+            - laravel_redis_publisher
 
-    amarpet_php:
-        image: amarpet_php
+    laravel_redis_publisher_php:
+        image: laravel_redis_publisher_php
         build:
             context: ./docker/development
             dockerfile: php.dockerfile
-        container_name: amarpet_php
+        container_name: laravel_redis_publisher_php
         ports:
             - "9081:9000"
         volumes:
@@ -54,18 +53,10 @@ services:
         networks:
             - amarpet_backend
 
-    amarpet_redis:
-        image: redis:alpine
-        restart: unless-stopped
-        container_name: amarpet_redis
-        ports:
-            - "6381:6379"
-        networks:
-            - amarpet_backend
 
-    amarpet_npm:
+    laravel_redis_publisher_npm:
         image: node:18-alpine
-        container_name: amarpet_npm
+        container_name: laravel_redis_publisher_npm
         volumes:
             - ./:/var/www/html
         ports:
@@ -73,22 +64,4 @@ services:
         working_dir: /var/www/html
         tty: true
         networks:
-            - amarpet_backend
-
-    amarpet_queue:
-        image: amarpet_php
-        container_name: amarpet_queue
-        restart: always
-        working_dir: /var/www/html
-        command: php artisan queue:work
-        depends_on:
-            - amarpet_php
-        volumes:
-            - ./:/var/www/html:delegated
-        networks:
-            - amarpet_backend
-
-
-volumes:
-    elasticsearch:
-        driver: local
+            - laravel_redis_publisher
