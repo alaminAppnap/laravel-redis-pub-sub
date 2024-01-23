@@ -18,6 +18,7 @@ jobs:
           port: ${{ secrets.SERVER_SSH_PORT }}
           script: |
             cd /var/www/laravel-redis-publisher
+            git pull origin master
             make pull
             make stop
             make start
