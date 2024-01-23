@@ -51,7 +51,7 @@ services:
         volumes:
             - ./:/var/www/html:delegated
         networks:
-            - amarpet_backend
+            - laravel_redis_publisher
 
 
     laravel_redis_publisher_npm:
