@@ -23,7 +23,6 @@ jobs:
             make start
             make down
             make migrate
-            make api-doc-generate
             make optimize
             make up
             make unused-images-remove
