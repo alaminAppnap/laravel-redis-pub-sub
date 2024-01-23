@@ -41,7 +41,6 @@ services:
             - laravel_redis_publisher
 
     laravel_redis_publisher_php:
-        image: laravel_redis_publisher_php
         build:
             context: ./docker/development
             dockerfile: php.dockerfile
