@@ -5,35 +5,6 @@ networks:
         driver: bridge
 
 services:
-    amarpet_elasticsearch:
-        image: elasticsearch:7.17.13
-        container_name: amarpet_elasticsearch
-        restart: unless-stopped
-        environment:
-            - node.name=elastic
-            - cluster.name=elastic-docker-cluster
-            - discovery.type=single-node
-            - bootstrap.memory_lock=true
-            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-            - "http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization"
-            - "http.cors.allow-credentials=true"
-            - "http.cors.enabled: false"
-            - "http.cors.allow-origin: *"
-            - "indices.breaker.total.limit: 80%"
-            - "ingest.geoip.downloader.enabled: false"
-        ports:
-            - "9200:9200"
-    #    amarpet_kibana:
-    #        image: docker.elastic.co/kibana/kibana:7.15.0
-    #        container_name: kibana
-    #        restart: unless-stopped
-    #        environment:
-    #            ELASTICSEARCH_URL: "http://amarpet_elasticsearch:9200"
-    #            ELASTICSEARCH_HOSTS: "http://amarpet_elasticsearch:9200"
-    #        ports:
-    #            - 5601:5601
-    #        depends_on:
-    #            - amarpet_elasticsearch
     amarpet_app:
         build:
             context: ./docker/development
